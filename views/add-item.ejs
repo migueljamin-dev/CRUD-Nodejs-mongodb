@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head partials -->
+  <%- include('./partials/head.ejs') %>
+
+<body>
+     <!-- Nav partials -->
+  <%- include('./partials/nav.ejs') %>
+  
+      <div class="container">
+        <div class="row">
+            <form class="col s12" action='/items' method='post'>
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">shopping_cart</i>
+                  <input id="item_name" type="text" name="name" class="validate">
+                  <label for="item_name">Item Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">attach_money</i>
+                  <input id="price" name="price" type="tel" class="validate">
+                  <label for="price">Price</label>
+                </div>
+              </div>
+              <button class="btn">Add Item</button>
+            </form>
+          </div>
+      </div>
+      <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      
+
+      <script>
+        $(document).ready(function() {
+          M.updateTextFields();
+        });
+
+      </script>
+</body>
+</html>

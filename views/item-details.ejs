@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head partials -->
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <!-- Nav partials -->
+    <%- include('./partials/nav.ejs') %>
+      <div class="container">
+          <h4>Item Details</h4>
+        <div>
+            <h5>Item Name: <%= item.name %></h5>
+            <h5>Price: <%= item.price %></h5>
+        </div>
+        <a id="btnDelete" class="btn delete" data-id="<%= item._id %>" href="">Delete</a>
+      </div>
+    <script>
+        // for Delete Button
+        btnDelete.onclick = (e) => {
+            e.preventDefault();
+            // to get the id when click
+            const id = e.target.getAttribute('data-id');
+            // to pass the app.js then create the delete 
+            const endpoint = `/item/${id}`;
+            fetch(endpoint,{
+                method:'DELETE'
+            }).then(res => res.json())
+                .then(data => {
+                    console.log('data',data);
+                    window.location.href = data.redirect;
+                })
+            .catch(err => console.log(err));
+            
+        }
+
+    </script>    
+</body>
+</html>
